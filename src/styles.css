@@ -185,4 +185,18 @@
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
   }
+  .field {
+    width: 100%;
+    background: color-mix(in oklab, var(--background) 60%, transparent);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .field:focus {
+    border-color: color-mix(in oklab, var(--brand) 50%, var(--border));
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand) 18%, transparent);
+  }
 }
