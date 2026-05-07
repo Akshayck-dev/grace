@@ -7,12 +7,12 @@ import p2 from "@/assets/p2.jpg";
 import p3 from "@/assets/p3.jpg";
 
 const items = [
-  { name: "Ava Larsen", role: "Head of Design, Northwind", avatar: p1, rating: 5,
-    quote: "Velora reframed how we approach product. Six weeks in, NPS jumped 18 points and our team finally feels aligned around one design language." },
-  { name: "Marcus Chen", role: "CEO, Tessera AI", avatar: p2, rating: 5,
-    quote: "The level of craft is rare. Every detail considered, every animation purposeful. They shipped what felt impossible on a deadline that felt impossible." },
-  { name: "Priya Raman", role: "VP Marketing, Fielder", avatar: p3, rating: 5,
-    quote: "Working with Velora feels like an unfair advantage. They make decisions that compound for years, not sprints." },
+  { name: "Ava Larsen", role: "Hydra-Glow Facial · 6 months", avatar: p1, rating: 5,
+    quote: "My skin has never looked better. The team at Velora actually listens — every treatment feels personal, never rushed. I leave glowing every time." },
+  { name: "Marcus Chen", role: "Laser Resurfacing · 1 year", avatar: p2, rating: 5,
+    quote: "Years of sun damage, gone. Dr. Hayes walked me through every option and the results have been life-changing. The clinic itself is a sanctuary." },
+  { name: "Priya Raman", role: "Injectables & Fillers · 2 years", avatar: p3, rating: 5,
+    quote: "I look like myself, just rested. That's the highest compliment. Velora is the only place I trust with my face." },
 ];
 
 export function Testimonials() {
