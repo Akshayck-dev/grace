@@ -11,10 +11,10 @@ import { Footer } from "@/components/site/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lumen — A studio for inevitable products" },
-      { name: "description", content: "Lumen is a design and engineering studio crafting elegant digital products for ambitious teams." },
-      { property: "og:title", content: "Lumen — A studio for inevitable products" },
-      { property: "og:description", content: "Brand, product, motion and engineering — crafted with relentless care." },
+      { title: "Velora — Premium Cosmetics Clinic" },
+      { name: "description", content: "Velora is a premium cosmetics clinic offering bespoke facials, injectables, laser and aesthetic wellness by board-certified specialists." },
+      { property: "og:title", content: "Velora — Premium Cosmetics Clinic" },
+      { property: "og:description", content: "Expert aesthetic care, beautifully delivered. Book a consultation today." },
     ],
   }),
   component: Index,

@@ -9,10 +9,10 @@ export function Footer() {
             <span className="h-8 w-8 rounded-xl bg-aurora text-white inline-flex items-center justify-center">
               <Sparkles className="h-4 w-4" />
             </span>
-            Lumen
+            Velora
           </div>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-            A design and engineering studio building inevitable digital products.
+            A premium cosmetics clinic delivering expert aesthetic care, beautifully.
           </p>
           <div className="mt-5 flex gap-2">
             {[Twitter, Github, Linkedin, Instagram].map((I, i) => (
@@ -23,9 +23,9 @@ export function Footer() {
           </div>
         </div>
         {[
-          { title: "Studio", links: ["Services", "Work", "About", "Careers"] },
-          { title: "Resources", links: ["Journal", "Press kit", "Changelog", "FAQ"] },
-          { title: "Contact", links: ["hello@lumen.studio", "+1 (415) 555-0144", "Lisbon", "Brooklyn"] },
+          { title: "Clinic", links: ["Treatments", "Gallery", "About", "Careers"] },
+          { title: "Resources", links: ["Journal", "Aftercare", "Gift cards", "FAQ"] },
+          { title: "Contact", links: ["concierge@veloraclinic.com", "+1 (415) 555-0144", "120 Madison Ave", "Mon–Sat · 9–8"] },
         ].map((c) => (
           <div key={c.title}>
             <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{c.title}</div>
@@ -38,7 +38,7 @@ export function Footer() {
         ))}
       </div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 mt-12 flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
-        <div>© {new Date().getFullYear()} Lumen Studio. All rights reserved.</div>
+        <div>© {new Date().getFullYear()} Velora Studio. All rights reserved.</div>
         <div className="flex gap-5"><a href="#" className="hover:text-foreground">Privacy</a><a href="#" className="hover:text-foreground">Terms</a><a href="#" className="hover:text-foreground">Cookies</a></div>
       </div>
     </footer>

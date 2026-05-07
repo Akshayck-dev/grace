@@ -89,9 +89,9 @@
   --input: oklch(0.92 0.005 270);
   --ring: oklch(0.65 0.18 290);
 
-  --brand: oklch(0.62 0.22 290);     /* violet */
-  --brand-2: oklch(0.7 0.18 200);    /* cyan */
-  --brand-3: oklch(0.7 0.22 340);    /* magenta */
+  --brand: oklch(0.72 0.13 20);   /* rose */
+  --brand-2: oklch(0.82 0.1 70);   /* champagne */
+  --brand-3: oklch(0.78 0.14 350); /* blush */
 
   --gradient-hero: radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklab, var(--brand) 35%, transparent), transparent 70%),
                    radial-gradient(ellipse 60% 50% at 80% 30%, color-mix(in oklab, var(--brand-2) 25%, transparent), transparent 70%),
@@ -125,9 +125,9 @@
   --input: oklch(1 0 0 / 12%);
   --ring: oklch(0.65 0.18 290);
 
-  --brand: oklch(0.7 0.22 290);
-  --brand-2: oklch(0.78 0.18 200);
-  --brand-3: oklch(0.78 0.22 340);
+  --brand: oklch(0.78 0.13 20);
+  --brand-2: oklch(0.85 0.1 70);
+  --brand-3: oklch(0.82 0.14 350);
 
   --shadow-elegant: 0 30px 80px -30px color-mix(in oklab, var(--brand) 50%, transparent);
   --shadow-card: 0 1px 0 0 color-mix(in oklab, white 6%, transparent), 0 20px 40px -20px black;

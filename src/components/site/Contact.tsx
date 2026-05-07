@@ -9,9 +9,9 @@ export function Contact() {
     <section id="contact" className="relative py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          eyebrow="Contact"
-          title="Let's build something inevitable."
-          subtitle="Tell us about your project. We respond within one business day."
+          eyebrow="Book a visit"
+          title="Begin your Velora ritual."
+          subtitle="Request a consultation and our concierge will reach out within one business day to plan your visit."
         />
 
         <div className="mt-16 grid lg:grid-cols-5 gap-5">
@@ -23,25 +23,25 @@ export function Contact() {
             <div className="grid sm:grid-cols-2 gap-4">
               <Field label="Name"><input required className="field" placeholder="Ada Lovelace" /></Field>
               <Field label="Email"><input required type="email" className="field" placeholder="ada@studio.com" /></Field>
-              <Field label="Company" className="sm:col-span-2"><input className="field" placeholder="Lumen Studio" /></Field>
-              <Field label="Project" className="sm:col-span-2">
-                <textarea required rows={5} className="field resize-none" placeholder="Tell us what you're building…" />
+              <Field label="Company" className="sm:col-span-2"><input className="field" placeholder="Velora Studio" /></Field>
+              <Field label="Treatment of interest" className="sm:col-span-2">
+                <textarea required rows={5} className="field resize-none" placeholder="Tell us what you'd like to address — skin, contouring, wellness…" />
               </Field>
             </div>
             <button
               type="submit"
               className="mt-6 group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background shadow-elegant hover:opacity-90 transition"
             >
-              {sent ? "Message sent — thank you." : "Send message"}
+              {sent ? "Request received — we'll be in touch." : "Request a consultation"}
               <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </button>
           </motion.form>
 
           <div className="lg:col-span-2 space-y-5">
             {[
-              { icon: Mail, label: "Email", value: "hello@lumen.studio" },
+              { icon: Mail, label: "Email", value: "concierge@veloraclinic.com" },
               { icon: Phone, label: "Phone", value: "+1 (415) 555-0144" },
-              { icon: MapPin, label: "Studio", value: "Lisbon · Brooklyn" },
+              { icon: MapPin, label: "Clinic", value: "120 Madison Ave · NYC" },
             ].map((c, i) => {
               const Icon = c.icon;
               return (

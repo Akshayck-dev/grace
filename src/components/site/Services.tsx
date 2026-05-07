@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Layers, Code2, Sparkles, Wand2, LineChart, Compass, Plus } from "lucide-react";
+import { Sparkles, Droplet, Sun, Heart, Flower2, Gem, Plus } from "lucide-react";
 
 const services = [
-  { icon: Compass, title: "Strategy & Brand", desc: "Positioning, naming, identity systems and narrative that compounds.", details: "Workshops, audits, brand books, voice & tone, design tokens." },
-  { icon: Layers, title: "Product Design", desc: "End-to-end product design from research to pixel-perfect interfaces.", details: "User flows, prototyping, design systems, accessibility, handoff." },
-  { icon: Code2, title: "Engineering", desc: "Modern web stacks shipped fast with quality and performance baked in.", details: "Next.js, TanStack, edge runtimes, type-safe APIs, observability." },
-  { icon: Wand2, title: "Motion & 3D", desc: "Cinematic motion, micro-interactions and immersive 3D moments.", details: "Lottie, GSAP, Framer Motion, WebGL, after-effects pipeline." },
-  { icon: LineChart, title: "Growth", desc: "Experimentation, analytics and conversion-focused iteration.", details: "A/B testing, funnel analysis, SEO, CRO, retention loops." },
-  { icon: Sparkles, title: "AI Products", desc: "Practical AI features that ship — from copilots to agents.", details: "RAG, evals, prompt design, function-calling, fine-tuning." },
+  { icon: Sparkles, title: "Signature Facials", desc: "Bespoke facials tailored to your skin's needs — deep cleansing, hydration and renewal.", details: "Hydra-glow, oxygen infusion, gold lift, vitamin C therapy. 60–90 minutes." },
+  { icon: Droplet, title: "Injectables & Fillers", desc: "Subtle, expert-administered treatments that refresh — never overdone.", details: "Botox, hyaluronic fillers, lip enhancement, jawline contouring by board-certified MDs." },
+  { icon: Sun, title: "Laser & Light", desc: "Advanced laser technology for clearer, smoother and more even skin.", details: "IPL photofacial, laser hair removal, pigmentation correction, vascular treatments." },
+  { icon: Flower2, title: "Skin Rejuvenation", desc: "Microneedling, peels and resurfacing that reveal your healthiest skin.", details: "Chemical peels, RF microneedling, dermaplaning, PRP therapy." },
+  { icon: Heart, title: "Body Contouring", desc: "Non-invasive body sculpting with proven, FDA-cleared technology.", details: "CoolSculpting, EMSculpt, radiofrequency tightening, lymphatic drainage." },
+  { icon: Gem, title: "Wellness & Aesthetics", desc: "Holistic treatments that nourish skin from the inside out.", details: "IV vitamin therapy, NAD+, micronutrient panels, bespoke skincare protocols." },
 ];
 
 export function Services() {

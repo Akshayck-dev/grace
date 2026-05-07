@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Compass, Telescope } from "lucide-react";
+import { Heart, Sparkles } from "lucide-react";
 import { SectionHeader } from "./Services";
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
@@ -25,17 +25,17 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 }
 
 const stats = [
-  { value: 142, suffix: "+", label: "Projects shipped" },
-  { value: 38, suffix: "", label: "Awards & features" },
-  { value: 99, suffix: "%", label: "Client retention" },
-  { value: 12, suffix: "", label: "Years compounding" },
+  { value: 12000, suffix: "+", label: "Happy clients" },
+  { value: 25, suffix: "+", label: "Treatments offered" },
+  { value: 98, suffix: "%", label: "Would recommend" },
+  { value: 12, suffix: "", label: "Years of expertise" },
 ];
 
 const timeline = [
-  { year: "2013", title: "Founded in Lisbon", text: "Started as a two-person studio with one big belief: craft compounds." },
-  { year: "2017", title: "Series of breakthroughs", text: "Shipped flagship work for Northwind, Fielder and Tessera." },
-  { year: "2021", title: "Studio expands globally", text: "Opened an outpost in Brooklyn. Grew to a team of fifteen." },
-  { year: "2026", title: "Lumen v3", text: "Launched our internal design OS. Now powering every engagement." },
+  { year: "2014", title: "Velora opens its doors", text: "A small clinic founded by Dr. Elena Hayes with one goal — honest, expert aesthetic care." },
+  { year: "2018", title: "Medical aesthetics expansion", text: "Added board-certified injectors and our flagship laser suite." },
+  { year: "2022", title: "Wellness pavilion launch", text: "Opened our IV therapy and holistic wellness space — beauty from the inside out." },
+  { year: "2026", title: "Flagship clinic redesign", text: "A reimagined sanctuary built around the modern client. You'll feel the difference at the door." },
 ];
 
 export function About() {
@@ -43,9 +43,9 @@ export function About() {
     <section id="about" className="relative py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          eyebrow="About"
-          title="A small studio, a long horizon."
-          subtitle="We're a tightly-knit team obsessed with the work. We choose a few partners a year and go deep."
+          eyebrow="About Velora"
+          title="Expert care, beautifully delivered."
+          subtitle="A team of board-certified physicians, master estheticians and wellness specialists — united by one standard of care."
         />
 
         <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -73,11 +73,11 @@ export function About() {
           >
             <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-aurora opacity-30 blur-3xl" />
             <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-aurora text-white shadow-glow">
-              <Compass className="h-5 w-5" />
+              <Heart className="h-5 w-5" />
             </div>
-            <h3 className="mt-6 font-display text-2xl font-semibold">Mission</h3>
+            <h3 className="mt-6 font-display text-2xl font-semibold">Our Mission</h3>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              Make digital products that respect people's time and attention — beautiful by default, useful by design.
+              To deliver expert aesthetic care that respects the individual — natural-looking results, never overdone, always honest.
             </p>
           </motion.div>
           <motion.div
@@ -86,11 +86,11 @@ export function About() {
           >
             <div className="absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-aurora opacity-30 blur-3xl" />
             <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-aurora text-white shadow-glow">
-              <Telescope className="h-5 w-5" />
+              <Sparkles className="h-5 w-5" />
             </div>
-            <h3 className="mt-6 font-display text-2xl font-semibold">Vision</h3>
+            <h3 className="mt-6 font-display text-2xl font-semibold">Our Vision</h3>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              A world where the best software feels inevitable — quiet, considered, alive with detail.
+              A world where everyone feels at home in their skin — supported by science, guided by artistry, treated with kindness.
             </p>
           </motion.div>
         </div>

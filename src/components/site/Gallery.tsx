@@ -10,12 +10,12 @@ import g5 from "@/assets/g5.jpg";
 import g6 from "@/assets/g6.jpg";
 
 const items = [
-  { src: g1, title: "Atrium — Architecture Co.", tag: "Brand" },
-  { src: g2, title: "Flux — Generative Identity", tag: "Motion" },
-  { src: g3, title: "Quill — Editor Suite", tag: "Product" },
-  { src: g4, title: "Prism — Color OS", tag: "Design System" },
-  { src: g5, title: "Studio — Internal", tag: "Culture" },
-  { src: g6, title: "Lume — Sculpture Series", tag: "Art Direction" },
+  { src: g1, title: "The Velora Suite", tag: "Clinic" },
+  { src: g2, title: "Hydra-Glow Serum Therapy", tag: "Treatment" },
+  { src: g3, title: "Bespoke Skincare Rituals", tag: "Products" },
+  { src: g4, title: "Precision Aesthetic Tools", tag: "Technology" },
+  { src: g5, title: "Clean Beauty Edit", tag: "Curation" },
+  { src: g6, title: "Treatment Sanctuary", tag: "Spa" },
 ];
 
 export function Gallery() {
@@ -25,9 +25,9 @@ export function Gallery() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <SectionHeader
-            eyebrow="Selected work"
-            title="A gallery of recent craft."
-            subtitle="A small selection from the last 18 months."
+            eyebrow="Inside the clinic"
+            title="A sanctuary, by design."
+            subtitle="Step inside Velora — where medical-grade care meets considered, calming spaces."
           />
         </div>
 
