@@ -9,7 +9,7 @@ export function Footer() {
             <span className="h-8 w-8 rounded-xl bg-aurora text-white inline-flex items-center justify-center">
               <Sparkles className="h-4 w-4" />
             </span>
-            Lumen
+            Velora
           </div>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
             A design and engineering studio building inevitable digital products.
@@ -25,7 +25,7 @@ export function Footer() {
         {[
           { title: "Studio", links: ["Services", "Work", "About", "Careers"] },
           { title: "Resources", links: ["Journal", "Press kit", "Changelog", "FAQ"] },
-          { title: "Contact", links: ["hello@lumen.studio", "+1 (415) 555-0144", "Lisbon", "Brooklyn"] },
+          { title: "Contact", links: ["hello@veloraclinic.com", "+1 (415) 555-0144", "Lisbon", "Brooklyn"] },
         ].map((c) => (
           <div key={c.title}>
             <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{c.title}</div>
@@ -38,7 +38,7 @@ export function Footer() {
         ))}
       </div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 mt-12 flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
-        <div>© {new Date().getFullYear()} Lumen Studio. All rights reserved.</div>
+        <div>© {new Date().getFullYear()} Velora Studio. All rights reserved.</div>
         <div className="flex gap-5"><a href="#" className="hover:text-foreground">Privacy</a><a href="#" className="hover:text-foreground">Terms</a><a href="#" className="hover:text-foreground">Cookies</a></div>
       </div>
     </footer>

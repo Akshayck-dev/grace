@@ -35,7 +35,7 @@ const timeline = [
   { year: "2013", title: "Founded in Lisbon", text: "Started as a two-person studio with one big belief: craft compounds." },
   { year: "2017", title: "Series of breakthroughs", text: "Shipped flagship work for Northwind, Fielder and Tessera." },
   { year: "2021", title: "Studio expands globally", text: "Opened an outpost in Brooklyn. Grew to a team of fifteen." },
-  { year: "2026", title: "Lumen v3", text: "Launched our internal design OS. Now powering every engagement." },
+  { year: "2026", title: "Velora v3", text: "Launched our internal design OS. Now powering every engagement." },
 ];
 
 export function About() {

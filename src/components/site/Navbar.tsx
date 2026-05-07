@@ -53,7 +53,7 @@ export function Navbar() {
             <span className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-aurora text-white">
               <Sparkles className="h-4 w-4" />
             </span>
-            Lumen
+            Velora
           </a>
 
           <nav className="hidden md:flex items-center gap-1">

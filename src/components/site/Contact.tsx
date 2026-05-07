@@ -23,7 +23,7 @@ export function Contact() {
             <div className="grid sm:grid-cols-2 gap-4">
               <Field label="Name"><input required className="field" placeholder="Ada Lovelace" /></Field>
               <Field label="Email"><input required type="email" className="field" placeholder="ada@studio.com" /></Field>
-              <Field label="Company" className="sm:col-span-2"><input className="field" placeholder="Lumen Studio" /></Field>
+              <Field label="Company" className="sm:col-span-2"><input className="field" placeholder="Velora Studio" /></Field>
               <Field label="Project" className="sm:col-span-2">
                 <textarea required rows={5} className="field resize-none" placeholder="Tell us what you're building…" />
               </Field>
@@ -39,7 +39,7 @@ export function Contact() {
 
           <div className="lg:col-span-2 space-y-5">
             {[
-              { icon: Mail, label: "Email", value: "hello@lumen.studio" },
+              { icon: Mail, label: "Email", value: "hello@veloraclinic.com" },
               { icon: Phone, label: "Phone", value: "+1 (415) 555-0144" },
               { icon: MapPin, label: "Studio", value: "Lisbon · Brooklyn" },
             ].map((c, i) => {
