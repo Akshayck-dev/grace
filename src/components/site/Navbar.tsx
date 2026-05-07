@@ -4,11 +4,11 @@ import { Menu, X, Sparkles } from "lucide-react";
 import { ThemeToggle } from "./theme";
 
 const links = [
-  { href: "#services", label: "Services" },
-  { href: "#work", label: "Work" },
+  { href: "#services", label: "Treatments" },
+  { href: "#work", label: "Clinic" },
   { href: "#about", label: "About" },
-  { href: "#testimonials", label: "Clients" },
-  { href: "#contact", label: "Contact" },
+  { href: "#testimonials", label: "Reviews" },
+  { href: "#contact", label: "Book" },
 ];
 
 export function Navbar() {
@@ -83,7 +83,7 @@ export function Navbar() {
               href="#contact"
               className="hidden sm:inline-flex h-10 items-center rounded-full bg-foreground px-5 text-sm font-medium text-background hover:opacity-90 transition"
             >
-              Get started
+              Book now
             </a>
             <button
               onClick={() => setOpen(!open)}
@@ -118,7 +118,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="mt-2 inline-flex items-center justify-center rounded-2xl bg-foreground px-5 py-3 text-sm font-medium text-background"
               >
-                Get started
+              Book now
               </a>
             </motion.div>
           )}

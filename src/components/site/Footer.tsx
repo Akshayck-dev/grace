@@ -12,7 +12,7 @@ export function Footer() {
             Velora
           </div>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-            A design and engineering studio building inevitable digital products.
+            A premium cosmetics clinic delivering expert aesthetic care, beautifully.
           </p>
           <div className="mt-5 flex gap-2">
             {[Twitter, Github, Linkedin, Instagram].map((I, i) => (
@@ -23,9 +23,9 @@ export function Footer() {
           </div>
         </div>
         {[
-          { title: "Studio", links: ["Services", "Work", "About", "Careers"] },
-          { title: "Resources", links: ["Journal", "Press kit", "Changelog", "FAQ"] },
-          { title: "Contact", links: ["hello@veloraclinic.com", "+1 (415) 555-0144", "Lisbon", "Brooklyn"] },
+          { title: "Clinic", links: ["Treatments", "Gallery", "About", "Careers"] },
+          { title: "Resources", links: ["Journal", "Aftercare", "Gift cards", "FAQ"] },
+          { title: "Contact", links: ["concierge@veloraclinic.com", "+1 (415) 555-0144", "120 Madison Ave", "Mon–Sat · 9–8"] },
         ].map((c) => (
           <div key={c.title}>
             <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{c.title}</div>
