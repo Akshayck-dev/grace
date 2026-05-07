@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { ArrowRight, Calendar, ChevronLeft, ChevronRight, Sparkles, Star } from "lucide-react";
 import slide1 from "@/assets/slide1.jpg";
 import slide2 from "@/assets/slide2.jpg";
@@ -14,7 +15,7 @@ const slides = [
     description:
       "Bespoke facials and medical-grade serums, formulated for your skin — not the masses.",
     cta: "Book a facial",
-    accentTo: "#services",
+    accentTo: "/treatments",
   },
   {
     image: slide2,
@@ -24,7 +25,7 @@ const slides = [
     description:
       "Step inside our flagship clinic — calm, considered, designed around the modern client.",
     cta: "Tour the clinic",
-    accentTo: "#work",
+    accentTo: "/clinic",
   },
   {
     image: slide3,
@@ -34,7 +35,7 @@ const slides = [
     description:
       "Board-certified specialists. Honest advice. Subtle, natural-looking results that last.",
     cta: "Meet the team",
-    accentTo: "#about",
+    accentTo: "/about",
   },
 ];
 
@@ -103,21 +104,21 @@ export function Hero() {
                 </p>
 
                 <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-3">
-                  <a
-                    href="#contact"
+                  <Link
+                    to="/contact"
                     className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background shadow-elegant hover:opacity-90 transition"
                   >
                     <Calendar className="h-4 w-4" />
                     Book a consultation
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </a>
-                  <a
-                    href={s.accentTo}
+                  </Link>
+                  <Link
+                    to={s.accentTo}
                     className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-medium hover:bg-accent transition"
                   >
                     {s.cta}
                     <ArrowRight className="h-4 w-4" />
-                  </a>
+                  </Link>
                 </div>
               </motion.div>
             </AnimatePresence>
