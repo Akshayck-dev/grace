@@ -49,7 +49,7 @@ export const useTestimonials = () => {
               role: descData.role || "",
               quote: descData.quote || "",
               rating: descData.rating || 5,
-              avatar_url: getFullImageUrl(item.image as string),
+              avatar_url: getFullImageUrl(item.image as string) || "",
               order_index: item.displayOrder,
             };
           });
@@ -65,10 +65,10 @@ export const useTestimonials = () => {
           return {
             id: item.id,
             name: item.title || "",
-            role: descData.role,
-            rating: descData.rating,
-            quote: descData.quote,
-            avatar_url: getFullImageUrl(item.image as string),
+            role: descData.role || "",
+            rating: descData.rating || 5,
+            quote: descData.quote || "",
+            avatar_url: getFullImageUrl(item.image as string) || "",
             order_index: item.displayOrder,
           };
         });

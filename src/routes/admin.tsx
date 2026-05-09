@@ -16,6 +16,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { authApi } from "@/api/auth";
+import logo from "@/assets/Gracelogo.webp";
 
 export const Route = createFileRoute("/admin")({
   beforeLoad: ({ location }) => {
@@ -76,8 +77,8 @@ function AdminLayout() {
       >
         <div className="h-20 flex items-center px-6 border-b border-zinc-100">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-2xl bg-aurora flex items-center justify-center text-white shadow-glow flex-shrink-0">
-              <Sparkles className="h-6 w-6" />
+            <div className="h-12 w-12 rounded-xl bg-white border border-zinc-100 flex items-center justify-center shadow-sm overflow-hidden flex-shrink-0">
+              <img src={logo} alt="Grace" className="h-full w-full object-contain p-1" />
             </div>
             <AnimatePresence>
               {isSidebarOpen && (

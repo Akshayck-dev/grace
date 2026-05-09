@@ -2,122 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
-import slider11 from "@/assets/silder_web/slider11.webp";
-import slider12 from "@/assets/silder_web/slider12.webp";
-import slider13 from "@/assets/silder_web/slider13.webp";
-import slider14 from "@/assets/silder_web/slider14.webp";
-import slider15 from "@/assets/silder_web/slider15.webp";
-import slider16 from "@/assets/silder_web/slider16.webp";
-import dental1 from "@/assets/silder_web/slider_dental_web1.webp";
-import dental2 from "@/assets/silder_web/slider_dental_web2.webp";
-import dental3 from "@/assets/silder_web/slider_dental_web3.webp";
-import dental4 from "@/assets/silder_web/slider_dental_web4.webp";
-
-import slider11_mob from "@/assets/silder_mob/1.webp";
-import slider12_mob from "@/assets/silder_mob/2.webp";
-import slider13_mob from "@/assets/silder_mob/3.webp";
-import slider14_mob from "@/assets/silder_mob/4.webp";
-import slider15_mob from "@/assets/silder_mob/5.webp";
-import slider16_mob from "@/assets/silder_mob/5.webp";
-import dental1_mob from "@/assets/silder_mob/slider_dental_mob1.webp";
-import dental2_mob from "@/assets/silder_mob/slider_dental_mob2.webp";
-import dental3_mob from "@/assets/silder_mob/slider_dental_mob3.webp";
-import dental4_mob from "@/assets/silder_mob/slider_dental_mob4.webp";
-
 import { HeroSlide } from "@/types";
-
-const defaultSlides = [
-  {
-    image: slider11,
-    mobileImage: slider11_mob,
-    eyebrow: "The Art of Aesthetics",
-    title: ["Rediscover Your", "Natural Radiance"],
-    description: "Bespoke clinical treatments designed to enhance your unique features with medical-grade precision.",
-    cta: "View Treatments",
-    accentTo: "/treatments",
-  },
-  {
-    image: dental1,
-    mobileImage: dental1_mob,
-    eyebrow: "Advanced Dental Care",
-    title: ["Perfect Your", "Smile Today"],
-    description: "World-class dentistry combining cosmetic excellence with comprehensive oral health solutions.",
-    cta: "Dental Services",
-    accentTo: "/treatments",
-  },
-  {
-    image: slider15,
-    mobileImage: slider15_mob,
-    eyebrow: "Modern Clinical Excellence",
-    title: ["Science Meets", "Luxury Care"],
-    description: "Experience the perfect harmony of advanced medical technology and personalized wellness.",
-    cta: "Our Clinic",
-    accentTo: "/clinic",
-  },
-  {
-    image: dental2,
-    mobileImage: dental2_mob,
-    eyebrow: "Precision Dentistry",
-    title: ["Confidence in", "Every Smile"],
-    description: "Expertly delivered dental procedures that focus on both functionality and aesthetic beauty.",
-    cta: "Book Now",
-    accentTo: "/contact",
-  },
-  {
-    image: slider14,
-    mobileImage: slider14_mob,
-    eyebrow: "Premium Skin Care",
-    title: ["Flawless Skin,", "Timeless Beauty"],
-    description: "Personalized dermatology rituals that restore youthfulness and celebrate your individuality.",
-    cta: "Derm Services",
-    accentTo: "/treatments",
-  },
-  {
-    image: slider12,
-    mobileImage: slider12_mob,
-    eyebrow: "Aesthetic Mastery",
-    title: ["Elegance in", "Every Detail"],
-    description: "Precision-driven aesthetic solutions tailored for your unique skin journey.",
-    cta: "Explore More",
-    accentTo: "/treatments",
-  },
-  {
-    image: dental3,
-    mobileImage: dental3_mob,
-    eyebrow: "Smile Restoration",
-    title: ["A New Reason", "To Smile"],
-    description: "Comprehensive dental restoration using the latest medical technologies.",
-    cta: "View Services",
-    accentTo: "/treatments",
-  },
-  {
-    image: slider16,
-    mobileImage: slider16_mob,
-    eyebrow: "Clinical Wellness",
-    title: ["Balance Your", "Inner Beauty"],
-    description: "Holistic treatments that rejuvenate both body and spirit.",
-    cta: "Our Story",
-    accentTo: "/about",
-  },
-  {
-    image: dental4,
-    mobileImage: dental4_mob,
-    eyebrow: "Orthodontic Excellence",
-    title: ["Aligning Your", "Perfect Smile"],
-    description: "Expert orthodontic care for a lifetime of confidence.",
-    cta: "Consult Now",
-    accentTo: "/contact",
-  },
-  {
-    image: slider13,
-    mobileImage: slider13_mob,
-    eyebrow: "Timeless Radiance",
-    title: ["Reveal Your", "Best Self"],
-    description: "Advanced skin therapies that defy age and restore natural vitality.",
-    cta: "Book Today",
-    accentTo: "/contact",
-  },
-];
 
 export function Hero({ slides: dbSlides }: { slides?: HeroSlide[] }) {
   const slides = dbSlides && dbSlides.length > 0 
@@ -130,12 +15,15 @@ export function Hero({ slides: dbSlides }: { slides?: HeroSlide[] }) {
         cta: s.cta,
         accentTo: s.accent_to
       }))
-    : defaultSlides;
+    : [];
+
+  if (slides.length === 0) return null;
 
   const [i, setI] = useState(0);
   const [direction, setDirection] = useState(0);
 
   useEffect(() => {
+    if (slides.length <= 1) return;
     const t = setInterval(() => {
       setDirection(1);
       setI((prev) => (prev + 1) % slides.length);

@@ -2,22 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { X } from "lucide-react";
 import { SectionHeader } from "./Services";
-import g1 from "@/assets/g1.jpg";
-import g2 from "@/assets/g2.jpg";
-import g3 from "@/assets/g3.jpg";
-import g4 from "@/assets/g4.jpg";
-import g5 from "@/assets/g5.jpg";
-import g6 from "@/assets/g6.jpg";
-import { GalleryItem } from "@/lib/api-types";
-
-const defaultItems = [
-  { src: g1, title: "The Velora Suite", tag: "Clinic" },
-  { src: g2, title: "Hydra-Glow Serum Therapy", tag: "Treatment" },
-  { src: g3, title: "Bespoke Skincare Rituals", tag: "Products" },
-  { src: g4, title: "Precision Aesthetic Tools", tag: "Technology" },
-  { src: g5, title: "Clean Beauty Edit", tag: "Curation" },
-  { src: g6, title: "Treatment Sanctuary", tag: "Spa" },
-];
+import { GalleryItem } from "@/types";
 
 export function Gallery({ items: dbItems }: { items?: GalleryItem[] }) {
   const items = dbItems && dbItems.length > 0
@@ -27,6 +12,9 @@ export function Gallery({ items: dbItems }: { items?: GalleryItem[] }) {
         tag: it.tag
       }))
     : [];
+
+  // SMART GUARD: Hide section if no dynamic gallery items exist
+  if (items.length === 0) return null;
 
   const [active, setActive] = useState<number | null>(null);
   return (

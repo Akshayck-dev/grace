@@ -1,19 +1,7 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
-import { Testimonial } from "@/lib/api-types";
-import p1 from "@/assets/p1.jpg";
-import p2 from "@/assets/p2.jpg";
-import p3 from "@/assets/p3.jpg";
+import { Testimonial } from "@/types";
 import { Link } from "@tanstack/react-router";
-
-const defaultItems = [
-  { name: "Rahul Menon", role: "Kottayam", avatar: p1, rating: 5,
-    quote: "The UI is so clean and intuitive. It feels like it was designed with the user's peace of mind at the forefront. Truly a soft and delightful experience." },
-  { name: "Anjali Varghese", role: "Thrissur", avatar: p2, rating: 5,
-    quote: "A masterclass in minimalist design. It doesn't scream for attention, but it's impossible to ignore. The subtle shadows and highlights are beautiful." },
-  { name: "Basil Jose", role: "Idukki", avatar: p3, rating: 5,
-    quote: "The interface is so friendly and soft. It makes complex tasks feel simple and approachable. A really delightful user experience from top to bottom." },
-];
 
 export function Testimonials({ items: dbItems }: { items?: Testimonial[] }) {
   const items = dbItems && dbItems.length > 0
@@ -25,6 +13,9 @@ export function Testimonials({ items: dbItems }: { items?: Testimonial[] }) {
         quote: it.quote
       }))
     : [];
+
+  // SMART GUARD: Hide section if no dynamic testimonials exist
+  if (items.length === 0) return null;
 
   return (
     <section id="testimonials" className="relative pt-12 pb-4 overflow-hidden bg-gradient-to-br from-[#e0e8ff] via-white to-[#ffe0f0]">

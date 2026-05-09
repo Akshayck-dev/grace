@@ -10,6 +10,8 @@ export const Route = createFileRoute("/admin/login")({
   component: AdminLogin,
 });
 
+import logo from "@/assets/Gracelogo.webp";
+
 function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,8 +37,8 @@ function AdminLogin() {
       <div className="w-full max-w-md">
         <div className="bg-white rounded-3xl border border-border shadow-xl p-8 space-y-8">
           <div className="text-center space-y-2">
-            <div className="h-12 w-12 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <Lock className="h-6 w-6" />
+            <div className="h-20 w-20 flex items-center justify-center mx-auto mb-4 overflow-hidden">
+              <img src={logo} alt="Grace Aesthetics" className="h-full w-full object-contain" />
             </div>
             <h1 className="text-2xl font-display font-bold">Admin Portal</h1>
             <p className="text-muted-foreground">Please sign in to manage your clinic.</p>
@@ -47,7 +49,7 @@ function AdminLogin() {
               <label className="text-sm font-medium">Email Address</label>
               <Input 
                 type="email" 
-                placeholder="admin@velora.com" 
+                placeholder="admin@graceaestheticsclinic.com" 
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)} 
                 required 

@@ -74,8 +74,8 @@ export const useHero = () => {
               description: descData.description || "",
               cta: descData.cta || "",
               accent_to: descData.accent_to || "",
-              image_url: getFullImageUrl(desktopPath as string),
-              mobile_image_url: getFullImageUrl(mobilePath as string),
+              image_url: getFullImageUrl(desktopPath as string) || "",
+              mobile_image_url: getFullImageUrl(mobilePath as string) || "",
               order_index: item.displayOrder,
             };
           });
@@ -104,8 +104,8 @@ export const useHero = () => {
             description: descData.description,
             cta: descData.cta,
             accent_to: descData.accent_to,
-            image_url: getFullImageUrl(item.image as string),
-            mobile_image_url: getFullImageUrl(item.mobileImage as string),
+            image_url: getFullImageUrl(item.image as string) || "",
+            mobile_image_url: getFullImageUrl(item.mobileImage as string) || "",
             order_index: item.displayOrder,
           };
         });

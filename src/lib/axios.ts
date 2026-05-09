@@ -43,7 +43,7 @@ axiosInstance.interceptors.response.use(
       }
       
       const message = response.data?.message || "An unexpected error occurred";
-      const isListOperation = config?.url?.includes("GetAllPageContent");
+      const isListOperation = error.config?.url?.includes("GetAllPageContent");
       const isHandledError = response.status === 400 || response.status === 405;
 
       // We don't toast on 401 as it's handled by redirection usually,

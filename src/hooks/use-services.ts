@@ -49,7 +49,6 @@ export const useServices = () => {
               icon_name: descData.icon_name || "Activity",
               description: descData.description || "",
               details: descData.details || "",
-              image_url: getFullImageUrl(item.image as string),
               order_index: item.displayOrder,
             };
           });
@@ -68,7 +67,6 @@ export const useServices = () => {
             icon_name: descData.icon_name || "Activity",
             description: descData.description || "",
             details: descData.details || "",
-            image_url: getFullImageUrl(item.image as string),
             order_index: item.displayOrder,
           };
         });

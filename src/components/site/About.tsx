@@ -32,7 +32,7 @@ const stats = [
 ];
 
 const timeline = [
-  { year: "2014", title: "Velora opens its doors", text: "A small clinic founded by Dr. Elena Hayes with one goal — honest, expert aesthetic care." },
+  { year: "2014", title: "Grace Aesthetics Clinic opens its doors", text: "A small clinic founded with one goal — honest, expert aesthetic care." },
   { year: "2018", title: "Medical aesthetics expansion", text: "Added board-certified injectors and our flagship laser suite." },
   { year: "2022", title: "Wellness pavilion launch", text: "Opened our IV therapy and holistic wellness space — beauty from the inside out." },
   { year: "2026", title: "Flagship clinic redesign", text: "A reimagined sanctuary built around the modern client. You'll feel the difference at the door." },
