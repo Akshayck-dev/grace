@@ -8,8 +8,9 @@ import g3 from "@/assets/g3.jpg";
 import g4 from "@/assets/g4.jpg";
 import g5 from "@/assets/g5.jpg";
 import g6 from "@/assets/g6.jpg";
+import { GalleryItem } from "@/lib/api-types";
 
-const items = [
+const defaultItems = [
   { src: g1, title: "The Velora Suite", tag: "Clinic" },
   { src: g2, title: "Hydra-Glow Serum Therapy", tag: "Treatment" },
   { src: g3, title: "Bespoke Skincare Rituals", tag: "Products" },
@@ -18,40 +19,68 @@ const items = [
   { src: g6, title: "Treatment Sanctuary", tag: "Spa" },
 ];
 
-export function Gallery() {
+export function Gallery({ items: dbItems }: { items?: GalleryItem[] }) {
+  const items = dbItems && dbItems.length > 0
+    ? dbItems.map(it => ({
+        src: it.image_url,
+        title: it.title,
+        tag: it.tag
+      }))
+    : [];
+
   const [active, setActive] = useState<number | null>(null);
   return (
-    <section id="work" className="relative py-28 sm:py-36">
+    <section id="work" className="relative py-12 sm:py-16 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex items-end justify-between gap-6 flex-wrap">
-          <SectionHeader
-            eyebrow="Inside the clinic"
-            title="A sanctuary, by design."
-            subtitle="Step inside Velora — where medical-grade care meets considered, calming spaces."
-          />
+        <div className="text-center mb-12">
+          <motion.span 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-[10px] uppercase tracking-[0.3em] text-aurora font-bold block mb-4"
+          >
+            Clinical Excellence, Personalized Care.
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-5xl font-display font-bold mb-4"
+          >
+            Our Gallery
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-zinc-500 text-sm md:text-base max-w-xl mx-auto"
+          >
+            Trusted by Innovators Worldwide
+          </motion.p>
         </div>
 
-        <div className="mt-16 columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
+        {/* Desktop Grid / Mobile Carousel Hybrid */}
+        <div className="mt-8 flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-x-visible sm:pb-0">
           {items.map((it, i) => (
             <motion.button
-              key={it.title}
+              key={i}
               onClick={() => setActive(i)}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: (i % 3) * 0.08 }}
-              className="group relative mb-5 block w-full overflow-hidden rounded-3xl break-inside-avoid text-left"
+              className="group relative block min-w-[85vw] sm:min-w-0 w-full overflow-hidden rounded-[2.5rem] text-left aspect-[4/5] sm:aspect-[4/3] snap-center shadow-lg sm:shadow-none"
             >
               <img
                 src={it.src}
                 alt={it.title}
                 loading="lazy"
-                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 text-white">
-                <div className="text-xs uppercase tracking-[0.18em] opacity-80">{it.tag}</div>
-                <div className="mt-1 text-lg font-semibold">{it.title}</div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-40 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-5 translate-y-0 sm:translate-y-3 group-hover:translate-y-0 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-500 text-white">
+                <div className="text-[10px] uppercase tracking-[0.2em] opacity-80 font-bold">{it.tag}</div>
+                <div className="mt-1 text-xl sm:text-lg font-bold sm:font-semibold">{it.title}</div>
               </div>
             </motion.button>
           ))}

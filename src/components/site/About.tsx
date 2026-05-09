@@ -43,7 +43,7 @@ export function About() {
     <section id="about" className="relative py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          eyebrow="About Velora"
+          eyebrow="About Grace Aesthetics Clinic"
           title="Expert care, beautifully delivered."
           subtitle="A team of board-certified physicians, master estheticians and wellness specialists — united by one standard of care."
         />
@@ -77,7 +77,7 @@ export function About() {
             </div>
             <h3 className="mt-6 font-display text-2xl font-semibold">Our Mission</h3>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              To deliver expert aesthetic care that respects the individual — natural-looking results, never overdone, always honest.
+              At Grace Aesthetics, our mission is to help our clients look and feel their best by providing top-quality beauty and wellness services in a comfortable and welcoming environment. We believe that everyone deserves to feel confident and empowered in their own skin, and we are dedicated to helping our clients achieve their beauty goals with personalized care and attention to detail.
             </p>
           </motion.div>
           <motion.div
@@ -90,7 +90,7 @@ export function About() {
             </div>
             <h3 className="mt-6 font-display text-2xl font-semibold">Our Vision</h3>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              A world where everyone feels at home in their skin — supported by science, guided by artistry, treated with kindness.
+              Our vision is to be the premier destination for holistic beauty and wellness solutions in Kottayam, Kerala, and beyond. We strive to set the standard for excellence in our industry by consistently delivering exceptional results and exceeding our clients' expectations. With our commitment to innovation, education, and customer service, we aim to inspire confidence, promote self-care, and enhance the lives of our clients one treatment at a time.
             </p>
           </motion.div>
         </div>

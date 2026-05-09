@@ -1,85 +1,150 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Mail, MapPin, Phone, Send, Twitter, Github, Linkedin, Instagram } from "lucide-react";
+import { Send, MapPin, Mail, Phone, Clock } from "lucide-react";
 import { SectionHeader } from "./Services";
 
 export function Contact() {
-  const [sent, setSent] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Compose the message for WhatsApp
+    const text = `Hello Grace Aesthetics & Dental Care...%0ANew Enquiry Details,%0AName: ${encodeURIComponent(formData.name)}%0AEmail: ${encodeURIComponent(formData.email)}%0APhone: ${encodeURIComponent(formData.phone)}%0AMessage: ${encodeURIComponent(formData.message)}`;
+
+    // Clinic's WhatsApp number
+    const phoneNumber = "919645969799";
+
+    // WhatsApp link
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
+
+    // Redirect to WhatsApp
+    window.open(whatsappUrl, "_blank");
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
-    <section id="contact" className="relative py-28 sm:py-36">
+    <section id="contact" className="relative pt-2 pb-28 sm:pt-4 sm:pb-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          eyebrow="Book a visit"
-          title="Begin your Velora ritual."
-          subtitle="Request a consultation and our concierge will reach out within one business day to plan your visit."
+          eyebrow="Get in Touch"
+          title="Begin your transformation."
+          subtitle="Have questions or need more information? Our knowledgeable team is here to assist you with any inquiries. Whether you want to schedule an appointment or simply say hello — we're always happy to hear from you."
         />
 
-        <div className="mt-16 grid lg:grid-cols-5 gap-5">
-          <motion.form
-            onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="lg:col-span-3 rounded-3xl glass-strong p-6 sm:p-8 shadow-card"
+        <div className="mt-10 grid lg:grid-cols-5 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-3 self-start rounded-3xl glass-strong p-6 sm:pt-10 sm:px-10 sm:pb-0 shadow-card border border-white/10 overflow-hidden"
           >
-            <div className="grid sm:grid-cols-2 gap-4">
-              <Field label="Name"><input required className="field" placeholder="Ada Lovelace" /></Field>
-              <Field label="Email"><input required type="email" className="field" placeholder="ada@studio.com" /></Field>
-              <Field label="Company" className="sm:col-span-2"><input className="field" placeholder="Velora Studio" /></Field>
-              <Field label="Treatment of interest" className="sm:col-span-2">
-                <textarea required rows={5} className="field resize-none" placeholder="Tell us what you'd like to address — skin, contouring, wellness…" />
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-6">
+                <Field label="Your Name">
+                  <input 
+                    required 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="field" 
+                    placeholder="Enter your name" 
+                  />
+                </Field>
+                <Field label="Email Address">
+                  <input 
+                    required 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="field" 
+                    placeholder="Enter your email" 
+                  />
+                </Field>
+              </div>
+              <Field label="Mobile Number">
+                <input 
+                  required 
+                  type="tel" 
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="field" 
+                  placeholder="Enter your mobile number" 
+                />
               </Field>
-            </div>
-            <button
-              type="submit"
-              className="mt-6 group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background shadow-elegant hover:opacity-90 transition"
-            >
-              {sent ? "Request received — we'll be in touch." : "Request a consultation"}
-              <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </button>
-          </motion.form>
-
-          <div className="lg:col-span-2 space-y-5">
-            {[
-              { icon: Mail, label: "Email", value: "concierge@veloraclinic.com" },
-              { icon: Phone, label: "Phone", value: "+1 (415) 555-0144" },
-              { icon: MapPin, label: "Clinic", value: "120 Madison Ave · NYC" },
-            ].map((c, i) => {
-              const Icon = c.icon;
-              return (
-                <motion.div
-                  key={c.label}
-                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                  className="rounded-3xl glass-strong p-5 flex items-center gap-4 hover-lift"
+              <Field label="How can we help?">
+                <textarea 
+                  required 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={5} 
+                  className="field resize-none" 
+                  placeholder="Write your message here..." 
+                />
+              </Field>
+              <div className="flex justify-center pb-2">
+                <button
+                  type="submit"
+                  className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-foreground px-10 py-4 text-sm font-bold text-background shadow-glow hover:opacity-95 transition-all active:scale-[0.98]"
                 >
-                  <div className="h-11 w-11 rounded-2xl bg-aurora text-white inline-flex items-center justify-center shadow-glow">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{c.label}</div>
-                    <div className="font-medium">{c.value}</div>
-                  </div>
-                </motion.div>
-              );
-            })}
+                  Send Message via WhatsApp
+                  <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </button>
+              </div>
+            </form>
+          </motion.div>
+
+          <div className="lg:col-span-2 space-y-6">
+            <div className="space-y-4">
+              <ContactInfo 
+                icon={MapPin} 
+                label="Location" 
+                value="Padavathil Building, Thellakom PO, Kottayam" 
+              />
+              <ContactInfo 
+                icon={Mail} 
+                label="Email Us" 
+                value="info@graceaesthetics.com" 
+              />
+              <ContactInfo 
+                icon={Phone} 
+                label="Call Now" 
+                value="+91 96459 69799" 
+              />
+              <ContactInfo 
+                icon={Clock} 
+                label="Clinic Hours" 
+                value="Mon - Sat: 10:00 AM - 7:00 PM" 
+              />
+            </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="rounded-3xl overflow-hidden glass-strong h-64"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="rounded-3xl overflow-hidden glass-strong h-80 border border-white/10 shadow-card"
             >
-              <iframe
-                title="map"
-                className="w-full h-full"
+              <iframe 
+                title="Grace Aesthetics Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62935.58818662269!2d76.5030250791064!3d9.640455476020366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07d30ef458dc3d%3A0x549c94d7b559d5ba!2sGrace%20Aesthetics%20%26%20Dental%20Care!5e0!3m2!1sml!2sin!4v1760533502941!5m2!1sml!2sin"
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
                 loading="lazy"
-                src="https://www.google.com/maps?q=Lisbon&output=embed"
               />
             </motion.div>
-
-            <div className="flex gap-2">
-              {[Twitter, Github, Linkedin, Instagram].map((I, i) => (
-                <a key={i} href="#" className="h-11 w-11 rounded-2xl glass-strong inline-flex items-center justify-center hover:bg-accent transition" aria-label="social">
-                  <I className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
           </div>
         </div>
       </div>
@@ -87,11 +152,30 @@ export function Contact() {
   );
 }
 
-function Field({ label, children, className = "" }: { label: string; children: React.ReactNode; className?: string }) {
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <label className={`block ${className}`}>
-      <span className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{label}</span>
-      <div className="mt-1.5">{children}</div>
+    <label className="block space-y-2">
+      <span className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground ml-1">{label}</span>
+      {children}
     </label>
+  );
+}
+
+function ContactInfo({ icon: Icon, label, value }: { icon: any; label: string; value: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      className="rounded-2xl glass p-4 flex items-center gap-4 hover:border-brand/30 transition-colors"
+    >
+      <div className="h-10 w-10 rounded-xl bg-aurora text-white inline-flex items-center justify-center shadow-glow">
+        <Icon className="h-5 w-5" />
+      </div>
+      <div>
+        <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground font-bold">{label}</div>
+        <div className="text-sm font-semibold">{value}</div>
+      </div>
+    </motion.div>
   );
 }

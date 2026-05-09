@@ -16,19 +16,18 @@ const cols = [
   ]},
 ];
 
+import logo from "@/assets/Gracelogo.webp";
+
 export function Footer() {
   return (
-    <footer className="relative border-t border-border py-16 mt-10">
+    <footer className="relative border-t border-border py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 grid grid-cols-2 md:grid-cols-5 gap-10">
         <div className="col-span-2">
-          <Link to="/" className="flex items-center gap-2 font-display font-semibold text-lg">
-            <span className="h-8 w-8 rounded-xl bg-aurora text-white inline-flex items-center justify-center">
-              <Sparkles className="h-4 w-4" />
-            </span>
-            Velora
+          <Link to="/" className="flex items-center gap-2 mb-4">
+            <img src={logo} alt="Grace Aesthetics" className="h-16 w-auto object-contain" />
           </Link>
-          <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-            A premium cosmetics clinic delivering expert aesthetic care, beautifully.
+          <p className="max-w-sm text-sm text-muted-foreground">
+            A premium multi-specialty clinic delivering expert aesthetic care, beautifully.
           </p>
           <div className="mt-5 flex gap-2">
             {[Twitter, Github, Linkedin, Instagram].map((I, i) => (
@@ -53,15 +52,15 @@ export function Footer() {
         <div>
           <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Contact</div>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-            <li>concierge@veloraclinic.com</li>
-            <li>+1 (415) 555-0144</li>
-            <li>120 Madison Ave, NYC</li>
+            <li>concierge@graceaestheticsclinic.com</li>
+            <li>+91 (481) 555-0144</li>
+            <li>Kottayam, Kerala, India</li>
             <li>Mon–Sat · 9–8</li>
           </ul>
         </div>
       </div>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 mt-12 flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
-        <div>© {new Date().getFullYear()} Velora Clinic. All rights reserved.</div>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 mt-8 flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
+        <div>© {new Date().getFullYear()} Grace Aesthetics Clinic. All rights reserved.</div>
         <div className="flex gap-5"><a href="#" className="hover:text-foreground">Privacy</a><a href="#" className="hover:text-foreground">Terms</a><a href="#" className="hover:text-foreground">Cookies</a></div>
       </div>
     </footer>

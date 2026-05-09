@@ -1,262 +1,256 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Calendar, ChevronLeft, ChevronRight, Sparkles, Star } from "lucide-react";
-import slide1 from "@/assets/slide1.jpg";
-import slide2 from "@/assets/slide2.jpg";
-import slide3 from "@/assets/slide3.jpg";
+import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import slider11 from "@/assets/silder_web/slider11.webp";
+import slider12 from "@/assets/silder_web/slider12.webp";
+import slider13 from "@/assets/silder_web/slider13.webp";
+import slider14 from "@/assets/silder_web/slider14.webp";
+import slider15 from "@/assets/silder_web/slider15.webp";
+import slider16 from "@/assets/silder_web/slider16.webp";
+import dental1 from "@/assets/silder_web/slider_dental_web1.webp";
+import dental2 from "@/assets/silder_web/slider_dental_web2.webp";
+import dental3 from "@/assets/silder_web/slider_dental_web3.webp";
+import dental4 from "@/assets/silder_web/slider_dental_web4.webp";
 
-const slides = [
+import slider11_mob from "@/assets/silder_mob/1.webp";
+import slider12_mob from "@/assets/silder_mob/2.webp";
+import slider13_mob from "@/assets/silder_mob/3.webp";
+import slider14_mob from "@/assets/silder_mob/4.webp";
+import slider15_mob from "@/assets/silder_mob/5.webp";
+import slider16_mob from "@/assets/silder_mob/5.webp";
+import dental1_mob from "@/assets/silder_mob/slider_dental_mob1.webp";
+import dental2_mob from "@/assets/silder_mob/slider_dental_mob2.webp";
+import dental3_mob from "@/assets/silder_mob/slider_dental_mob3.webp";
+import dental4_mob from "@/assets/silder_mob/slider_dental_mob4.webp";
+
+import { HeroSlide } from "@/types";
+
+const defaultSlides = [
   {
-    image: slide1,
-    eyebrow: "Signature Skincare",
-    title: ["Skin that", "glows."],
-    accent: "glows.",
-    description:
-      "Bespoke facials and medical-grade serums, formulated for your skin — not the masses.",
-    cta: "Book a facial",
+    image: slider11,
+    mobileImage: slider11_mob,
+    eyebrow: "The Art of Aesthetics",
+    title: ["Rediscover Your", "Natural Radiance"],
+    description: "Bespoke clinical treatments designed to enhance your unique features with medical-grade precision.",
+    cta: "View Treatments",
     accentTo: "/treatments",
   },
   {
-    image: slide2,
-    eyebrow: "The Velora Suite",
-    title: ["A sanctuary,", "by design."],
-    accent: "by design.",
-    description:
-      "Step inside our flagship clinic — calm, considered, designed around the modern client.",
-    cta: "Tour the clinic",
+    image: dental1,
+    mobileImage: dental1_mob,
+    eyebrow: "Advanced Dental Care",
+    title: ["Perfect Your", "Smile Today"],
+    description: "World-class dentistry combining cosmetic excellence with comprehensive oral health solutions.",
+    cta: "Dental Services",
+    accentTo: "/treatments",
+  },
+  {
+    image: slider15,
+    mobileImage: slider15_mob,
+    eyebrow: "Modern Clinical Excellence",
+    title: ["Science Meets", "Luxury Care"],
+    description: "Experience the perfect harmony of advanced medical technology and personalized wellness.",
+    cta: "Our Clinic",
     accentTo: "/clinic",
   },
   {
-    image: slide3,
-    eyebrow: "Expert Care",
-    title: ["Confidence,", "rediscovered."],
-    accent: "rediscovered.",
-    description:
-      "Board-certified specialists. Honest advice. Subtle, natural-looking results that last.",
-    cta: "Meet the team",
+    image: dental2,
+    mobileImage: dental2_mob,
+    eyebrow: "Precision Dentistry",
+    title: ["Confidence in", "Every Smile"],
+    description: "Expertly delivered dental procedures that focus on both functionality and aesthetic beauty.",
+    cta: "Book Now",
+    accentTo: "/contact",
+  },
+  {
+    image: slider14,
+    mobileImage: slider14_mob,
+    eyebrow: "Premium Skin Care",
+    title: ["Flawless Skin,", "Timeless Beauty"],
+    description: "Personalized dermatology rituals that restore youthfulness and celebrate your individuality.",
+    cta: "Derm Services",
+    accentTo: "/treatments",
+  },
+  {
+    image: slider12,
+    mobileImage: slider12_mob,
+    eyebrow: "Aesthetic Mastery",
+    title: ["Elegance in", "Every Detail"],
+    description: "Precision-driven aesthetic solutions tailored for your unique skin journey.",
+    cta: "Explore More",
+    accentTo: "/treatments",
+  },
+  {
+    image: dental3,
+    mobileImage: dental3_mob,
+    eyebrow: "Smile Restoration",
+    title: ["A New Reason", "To Smile"],
+    description: "Comprehensive dental restoration using the latest medical technologies.",
+    cta: "View Services",
+    accentTo: "/treatments",
+  },
+  {
+    image: slider16,
+    mobileImage: slider16_mob,
+    eyebrow: "Clinical Wellness",
+    title: ["Balance Your", "Inner Beauty"],
+    description: "Holistic treatments that rejuvenate both body and spirit.",
+    cta: "Our Story",
     accentTo: "/about",
+  },
+  {
+    image: dental4,
+    mobileImage: dental4_mob,
+    eyebrow: "Orthodontic Excellence",
+    title: ["Aligning Your", "Perfect Smile"],
+    description: "Expert orthodontic care for a lifetime of confidence.",
+    cta: "Consult Now",
+    accentTo: "/contact",
+  },
+  {
+    image: slider13,
+    mobileImage: slider13_mob,
+    eyebrow: "Timeless Radiance",
+    title: ["Reveal Your", "Best Self"],
+    description: "Advanced skin therapies that defy age and restore natural vitality.",
+    cta: "Book Today",
+    accentTo: "/contact",
   },
 ];
 
-export function Hero() {
+export function Hero({ slides: dbSlides }: { slides?: HeroSlide[] }) {
+  const slides = dbSlides && dbSlides.length > 0 
+    ? dbSlides.map(s => ({
+        image: s.image_url,
+        mobileImage: s.mobile_image_url,
+        eyebrow: s.eyebrow,
+        title: [s.title1, s.title2],
+        description: s.description,
+        cta: s.cta,
+        accentTo: s.accent_to
+      }))
+    : defaultSlides;
+
   const [i, setI] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [direction, setDirection] = useState(0);
 
   useEffect(() => {
-    if (paused) return;
-    const t = setInterval(() => setI((x) => (x + 1) % slides.length), 6000);
+    const t = setInterval(() => {
+      setDirection(1);
+      setI((prev) => (prev + 1) % slides.length);
+    }, 8000);
     return () => clearInterval(t);
-  }, [paused]);
+  }, [slides.length]);
 
-  const s = slides[i];
-  const next = () => setI((x) => (x + 1) % slides.length);
-  const prev = () => setI((x) => (x - 1 + slides.length) % slides.length);
+  const paginate = (newDirection: number) => {
+    setDirection(newDirection);
+    setI((prev) => (prev + newDirection + slides.length) % slides.length);
+  };
+
+  const current = slides[i];
 
   return (
-    <section
-      id="top"
-      className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <div className="absolute inset-0 bg-hero" />
-      <div className="absolute inset-0 grid-bg" />
+    <section className="relative h-screen min-h-[700px] w-full overflow-hidden bg-white">
+      {/* Background Images with Cross-fade */}
+      <AnimatePresence initial={false} custom={direction}>
+        <motion.div
+          key={i}
+          custom={direction}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className="absolute inset-0 z-0"
+        >
+          <picture>
+            {current.mobileImage && <source media="(max-width: 768px)" srcSet={current.mobileImage} />}
+            <img 
+              src={current.image} 
+              alt="Hero" 
+              className="h-full w-full object-cover object-top md:object-center transition-transform duration-[10s] scale-105"
+            />
+          </picture>
+          {/* Top gradient for Navbar visibility */}
+          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-zinc-950/40 to-transparent z-10" />
+        </motion.div>
+      </AnimatePresence>
 
-      <motion.div
-        aria-hidden
-        animate={{ y: [0, -30, 0], x: [0, 12, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-aurora opacity-40 blur-3xl"
-      />
-      <motion.div
-        aria-hidden
-        animate={{ y: [0, 30, 0], x: [0, -16, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-40 -right-24 h-96 w-96 rounded-full bg-aurora opacity-30 blur-3xl"
-      />
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Text side */}
-          <div className="text-center lg:text-left min-h-[28rem] lg:min-h-[32rem] flex flex-col justify-center">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <span className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em]">
-                  <Sparkles className="h-3.5 w-3.5" />
-                  {s.eyebrow}
-                </span>
-
-                <h1 className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.05]">
-                  {s.title[0]}
-                  <br />
-                  <span className="text-gradient">{s.title[1]}</span>
-                </h1>
-
-                <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  {s.description}
-                </p>
-
-                <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+      {/* Content Overlay */}
+      <div className="container relative z-10 mx-auto h-full px-4 sm:px-6">
+        <div className="flex h-full max-w-3xl flex-col justify-center">
+          <motion.div
+            key={`content-${i}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-auto mb-20 text-center sm:text-left"
+          >
+              <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-4 sm:gap-6 mt-8">
+                {current.cta && (
                   <Link
-                    to="/contact"
-                    className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background shadow-elegant hover:opacity-90 transition"
+                    to={current.accentTo}
+                    className="group relative flex h-12 sm:h-14 w-fit sm:w-auto items-center justify-center overflow-hidden rounded-full bg-zinc-950 px-8 sm:px-10 text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-white transition-all shadow-2xl"
                   >
-                    <Calendar className="h-4 w-4" />
-                    Book a consultation
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    <span className="relative z-10">{current.cta}</span>
+                    <ArrowRight className="absolute right-4 h-4 w-4 translate-x-4 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
                   </Link>
-                  <Link
-                    to={s.accentTo}
-                    className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-medium hover:bg-accent transition"
-                  >
-                    {s.cta}
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Carousel controls */}
-            <div className="mt-12 flex items-center justify-center lg:justify-start gap-4">
-              <button
-                onClick={prev}
-                className="h-11 w-11 rounded-full glass-strong inline-flex items-center justify-center hover:bg-accent transition"
-                aria-label="Previous slide"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-
-              <div className="flex items-center gap-2">
-                {slides.map((_, k) => (
-                  <button
-                    key={k}
-                    onClick={() => setI(k)}
-                    aria-label={`Go to slide ${k + 1}`}
-                    className="group relative h-1.5 overflow-hidden rounded-full bg-border transition-all"
-                    style={{ width: i === k ? 48 : 16 }}
-                  >
-                    {i === k && (
-                      <motion.span
-                        key={`bar-${i}-${paused}`}
-                        initial={{ width: "0%" }}
-                        animate={{ width: paused ? "100%" : "100%" }}
-                        transition={{ duration: paused ? 0 : 6, ease: "linear" }}
-                        className="absolute inset-y-0 left-0 bg-foreground"
-                      />
-                    )}
-                  </button>
-                ))}
+                )}
+                
+                <Link
+                  to="/contact"
+                  className="group flex h-12 sm:h-auto w-fit sm:w-auto items-center justify-center sm:justify-start gap-3 text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-zinc-900 glass-strong px-6 py-3 rounded-full hover:bg-white transition-all shadow-lg"
+                >
+                  <span className="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-aurora/10 flex items-center justify-center group-hover:bg-aurora/20 transition-colors">
+                    <Sparkles className="h-3 sm:h-3.5 w-3 sm:w-3.5 text-aurora" />
+                  </span>
+                  Book a Consultation
+                </Link>
               </div>
+            </motion.div>
+        </div>
+      </div>
 
-              <button
-                onClick={next}
-                className="h-11 w-11 rounded-full glass-strong inline-flex items-center justify-center hover:bg-accent transition"
-                aria-label="Next slide"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
-
-              <div className="ml-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                {String(i + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
-              </div>
-            </div>
+      {/* Navigation Controls - Refined Center-Bottom for Mobile */}
+      <div className="absolute bottom-6 sm:bottom-10 left-1/2 sm:left-auto sm:right-10 -translate-x-1/2 sm:translate-x-0 z-20 flex flex-col items-center sm:items-end gap-6">
+        <div className="flex items-center gap-4 sm:gap-6 bg-white/20 backdrop-blur-xl px-4 py-2.5 sm:py-3 rounded-full border border-white/30 shadow-2xl">
+          <div className="flex gap-2 sm:gap-3">
+            <button 
+              onClick={() => paginate(-1)}
+              className="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-white flex items-center justify-center text-zinc-950 hover:bg-zinc-950 hover:text-white transition-all shadow-md"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button 
+              onClick={() => paginate(1)}
+              className="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-white flex items-center justify-center text-zinc-950 hover:bg-zinc-950 hover:text-white transition-all shadow-md"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
           </div>
 
-          {/* Image side */}
-          <div className="relative">
-            <div className="absolute -inset-6 rounded-[2rem] bg-aurora opacity-30 blur-3xl" />
-            <div className="relative aspect-[4/5] sm:aspect-[5/6] overflow-hidden rounded-[2rem] glass-strong p-2 shadow-elegant">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={i}
-                  src={s.image}
-                  alt={s.eyebrow}
-                  initial={{ opacity: 0, scale: 1.08 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 1.04 }}
-                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-2 w-[calc(100%-1rem)] h-[calc(100%-1rem)] rounded-[1.5rem] object-cover"
-                />
-              </AnimatePresence>
-
-              {/* Slide counter pill */}
-              <div className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full glass-strong px-3 py-1.5 text-xs font-medium">
-                <span className="h-1.5 w-1.5 rounded-full bg-rose-400 animate-pulse" />
-                Now booking · Spring
-              </div>
-            </div>
-
-            {/* Floating cards */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="hidden md:flex absolute -left-6 top-12 glass-strong rounded-2xl p-4 shadow-card items-center gap-3"
-            >
-              <div className="h-10 w-10 rounded-xl bg-aurora flex items-center justify-center text-white">
-                <Sparkles className="h-4 w-4" />
-              </div>
-              <div>
-                <div className="text-xs text-muted-foreground">Glow score</div>
-                <div className="font-semibold">+ 47%</div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="hidden md:block absolute -right-6 bottom-10 glass-strong rounded-2xl p-4 shadow-card"
-            >
-              <div className="flex items-center gap-1 text-amber-500">
-                {Array.from({ length: 5 }).map((_, k) => (
-                  <Star key={k} className="h-3.5 w-3.5 fill-current" />
-                ))}
-              </div>
-              <div className="mt-1 text-xs text-muted-foreground">12,000+ happy clients</div>
-              <div className="font-semibold text-base">4.9 average rating</div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Stats strip */}
-        <div className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {[
-            { v: "12k+", l: "Treatments delivered" },
-            { v: "25+", l: "Signature services" },
-            { v: "4.9★", l: "Average rating" },
-            { v: "12 yrs", l: "Of expert care" },
-          ].map((s, k) => (
-            <motion.div
-              key={s.l}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: k * 0.06 }}
-              className="rounded-2xl glass px-5 py-4 text-center sm:text-left"
-            >
-              <div className="font-display text-2xl font-semibold tracking-tight">{s.v}</div>
-              <div className="text-xs text-muted-foreground mt-1">{s.l}</div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Featured logos */}
-        <div className="mt-16 text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">As featured in</p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 opacity-60">
-            {["Vogue", "Elle", "Harper's", "Allure", "Marie Claire", "Glamour"].map((b) => (
-              <span key={b} className="text-xl font-display font-semibold tracking-tight italic">
-                {b}
-              </span>
+          <div className="h-4 w-[1px] bg-white/30 hidden sm:block" />
+          
+          {/* Progress Dots */}
+          <div className="flex gap-1.5 sm:gap-2">
+            {slides.map((_, k) => (
+              <button
+                key={k}
+                onClick={() => setI(k)}
+                className={`h-1 sm:h-1.5 rounded-full transition-all duration-500 ${i === k ? "w-5 sm:w-6 bg-aurora" : "w-1 sm:w-1.5 bg-white/40"}`}
+              />
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Side Featured In (Minimal) */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden xl:flex flex-col gap-12 px-8 py-12 border-l border-zinc-100 opacity-60 hover:opacity-100 transition-opacity">
+        {["Vogue", "Elle", "Allure"].map((brand) => (
+          <span key={brand} className="text-sm font-display font-bold tracking-tighter text-zinc-900 rotate-90 italic">
+            {brand}
+          </span>
+        ))}
       </div>
     </section>
   );

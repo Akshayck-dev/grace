@@ -9,164 +9,358 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TreatmentsRouteImport } from './routes/treatments'
-import { Route as ReviewsRouteImport } from './routes/reviews'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as ClinicRouteImport } from './routes/clinic'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as SiteRouteImport } from './routes/_site'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as SiteIndexRouteImport } from './routes/_site.index'
+import { Route as AdminTestimonialsRouteImport } from './routes/admin/testimonials'
+import { Route as AdminServicesRouteImport } from './routes/admin/services'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminHeroRouteImport } from './routes/admin/hero'
+import { Route as AdminGalleryRouteImport } from './routes/admin/gallery'
+import { Route as SiteTreatmentsRouteImport } from './routes/_site.treatments'
+import { Route as SiteReviewsRouteImport } from './routes/_site.reviews'
+import { Route as SiteContactRouteImport } from './routes/_site.contact'
+import { Route as SiteClinicRouteImport } from './routes/_site.clinic'
+import { Route as SiteBookingRouteImport } from './routes/_site.booking'
+import { Route as SiteAboutRouteImport } from './routes/_site.about'
 
-const TreatmentsRoute = TreatmentsRouteImport.update({
-  id: '/treatments',
-  path: '/treatments',
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ReviewsRoute = ReviewsRouteImport.update({
-  id: '/reviews',
-  path: '/reviews',
+const SiteRoute = SiteRouteImport.update({
+  id: '/_site',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ClinicRoute = ClinicRouteImport.update({
-  id: '/clinic',
-  path: '/clinic',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndexRoute = IndexRouteImport.update({
+const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AdminRoute,
+} as any)
+const SiteIndexRoute = SiteIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SiteRoute,
+} as any)
+const AdminTestimonialsRoute = AdminTestimonialsRouteImport.update({
+  id: '/testimonials',
+  path: '/testimonials',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminServicesRoute = AdminServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminHeroRoute = AdminHeroRouteImport.update({
+  id: '/hero',
+  path: '/hero',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminGalleryRoute = AdminGalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => AdminRoute,
+} as any)
+const SiteTreatmentsRoute = SiteTreatmentsRouteImport.update({
+  id: '/treatments',
+  path: '/treatments',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteReviewsRoute = SiteReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteContactRoute = SiteContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteClinicRoute = SiteClinicRouteImport.update({
+  id: '/clinic',
+  path: '/clinic',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteBookingRoute = SiteBookingRouteImport.update({
+  id: '/booking',
+  path: '/booking',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteAboutRoute = SiteAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => SiteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/clinic': typeof ClinicRoute
-  '/contact': typeof ContactRoute
-  '/reviews': typeof ReviewsRoute
-  '/treatments': typeof TreatmentsRoute
+  '/': typeof SiteIndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/about': typeof SiteAboutRoute
+  '/booking': typeof SiteBookingRoute
+  '/clinic': typeof SiteClinicRoute
+  '/contact': typeof SiteContactRoute
+  '/reviews': typeof SiteReviewsRoute
+  '/treatments': typeof SiteTreatmentsRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/hero': typeof AdminHeroRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/services': typeof AdminServicesRoute
+  '/admin/testimonials': typeof AdminTestimonialsRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/clinic': typeof ClinicRoute
-  '/contact': typeof ContactRoute
-  '/reviews': typeof ReviewsRoute
-  '/treatments': typeof TreatmentsRoute
+  '/about': typeof SiteAboutRoute
+  '/booking': typeof SiteBookingRoute
+  '/clinic': typeof SiteClinicRoute
+  '/contact': typeof SiteContactRoute
+  '/reviews': typeof SiteReviewsRoute
+  '/treatments': typeof SiteTreatmentsRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/hero': typeof AdminHeroRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/services': typeof AdminServicesRoute
+  '/admin/testimonials': typeof AdminTestimonialsRoute
+  '/': typeof SiteIndexRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/clinic': typeof ClinicRoute
-  '/contact': typeof ContactRoute
-  '/reviews': typeof ReviewsRoute
-  '/treatments': typeof TreatmentsRoute
+  '/_site': typeof SiteRouteWithChildren
+  '/admin': typeof AdminRouteWithChildren
+  '/_site/about': typeof SiteAboutRoute
+  '/_site/booking': typeof SiteBookingRoute
+  '/_site/clinic': typeof SiteClinicRoute
+  '/_site/contact': typeof SiteContactRoute
+  '/_site/reviews': typeof SiteReviewsRoute
+  '/_site/treatments': typeof SiteTreatmentsRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/hero': typeof AdminHeroRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/services': typeof AdminServicesRoute
+  '/admin/testimonials': typeof AdminTestimonialsRoute
+  '/_site/': typeof SiteIndexRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/about'
+    | '/booking'
     | '/clinic'
     | '/contact'
     | '/reviews'
     | '/treatments'
+    | '/admin/gallery'
+    | '/admin/hero'
+    | '/admin/login'
+    | '/admin/services'
+    | '/admin/testimonials'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/clinic' | '/contact' | '/reviews' | '/treatments'
+  to:
+    | '/about'
+    | '/booking'
+    | '/clinic'
+    | '/contact'
+    | '/reviews'
+    | '/treatments'
+    | '/admin/gallery'
+    | '/admin/hero'
+    | '/admin/login'
+    | '/admin/services'
+    | '/admin/testimonials'
+    | '/'
+    | '/admin'
   id:
     | '__root__'
-    | '/'
-    | '/about'
-    | '/clinic'
-    | '/contact'
-    | '/reviews'
-    | '/treatments'
+    | '/_site'
+    | '/admin'
+    | '/_site/about'
+    | '/_site/booking'
+    | '/_site/clinic'
+    | '/_site/contact'
+    | '/_site/reviews'
+    | '/_site/treatments'
+    | '/admin/gallery'
+    | '/admin/hero'
+    | '/admin/login'
+    | '/admin/services'
+    | '/admin/testimonials'
+    | '/_site/'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  ClinicRoute: typeof ClinicRoute
-  ContactRoute: typeof ContactRoute
-  ReviewsRoute: typeof ReviewsRoute
-  TreatmentsRoute: typeof TreatmentsRoute
+  SiteRoute: typeof SiteRouteWithChildren
+  AdminRoute: typeof AdminRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/treatments': {
-      id: '/treatments'
-      path: '/treatments'
-      fullPath: '/treatments'
-      preLoaderRoute: typeof TreatmentsRouteImport
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/reviews': {
-      id: '/reviews'
-      path: '/reviews'
-      fullPath: '/reviews'
-      preLoaderRoute: typeof ReviewsRouteImport
+    '/_site': {
+      id: '/_site'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof SiteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
     }
-    '/clinic': {
-      id: '/clinic'
-      path: '/clinic'
-      fullPath: '/clinic'
-      preLoaderRoute: typeof ClinicRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/': {
-      id: '/'
+    '/_site/': {
+      id: '/_site/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof SiteIndexRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/admin/testimonials': {
+      id: '/admin/testimonials'
+      path: '/testimonials'
+      fullPath: '/admin/testimonials'
+      preLoaderRoute: typeof AdminTestimonialsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/services': {
+      id: '/admin/services'
+      path: '/services'
+      fullPath: '/admin/services'
+      preLoaderRoute: typeof AdminServicesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/hero': {
+      id: '/admin/hero'
+      path: '/hero'
+      fullPath: '/admin/hero'
+      preLoaderRoute: typeof AdminHeroRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/gallery': {
+      id: '/admin/gallery'
+      path: '/gallery'
+      fullPath: '/admin/gallery'
+      preLoaderRoute: typeof AdminGalleryRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_site/treatments': {
+      id: '/_site/treatments'
+      path: '/treatments'
+      fullPath: '/treatments'
+      preLoaderRoute: typeof SiteTreatmentsRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/reviews': {
+      id: '/_site/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof SiteReviewsRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/contact': {
+      id: '/_site/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof SiteContactRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/clinic': {
+      id: '/_site/clinic'
+      path: '/clinic'
+      fullPath: '/clinic'
+      preLoaderRoute: typeof SiteClinicRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/booking': {
+      id: '/_site/booking'
+      path: '/booking'
+      fullPath: '/booking'
+      preLoaderRoute: typeof SiteBookingRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/about': {
+      id: '/_site/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof SiteAboutRouteImport
+      parentRoute: typeof SiteRoute
     }
   }
 }
 
+interface SiteRouteChildren {
+  SiteAboutRoute: typeof SiteAboutRoute
+  SiteBookingRoute: typeof SiteBookingRoute
+  SiteClinicRoute: typeof SiteClinicRoute
+  SiteContactRoute: typeof SiteContactRoute
+  SiteReviewsRoute: typeof SiteReviewsRoute
+  SiteTreatmentsRoute: typeof SiteTreatmentsRoute
+  SiteIndexRoute: typeof SiteIndexRoute
+}
+
+const SiteRouteChildren: SiteRouteChildren = {
+  SiteAboutRoute: SiteAboutRoute,
+  SiteBookingRoute: SiteBookingRoute,
+  SiteClinicRoute: SiteClinicRoute,
+  SiteContactRoute: SiteContactRoute,
+  SiteReviewsRoute: SiteReviewsRoute,
+  SiteTreatmentsRoute: SiteTreatmentsRoute,
+  SiteIndexRoute: SiteIndexRoute,
+}
+
+const SiteRouteWithChildren = SiteRoute._addFileChildren(SiteRouteChildren)
+
+interface AdminRouteChildren {
+  AdminGalleryRoute: typeof AdminGalleryRoute
+  AdminHeroRoute: typeof AdminHeroRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminServicesRoute: typeof AdminServicesRoute
+  AdminTestimonialsRoute: typeof AdminTestimonialsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminGalleryRoute: AdminGalleryRoute,
+  AdminHeroRoute: AdminHeroRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminServicesRoute: AdminServicesRoute,
+  AdminTestimonialsRoute: AdminTestimonialsRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  ClinicRoute: ClinicRoute,
-  ContactRoute: ContactRoute,
-  ReviewsRoute: ReviewsRoute,
-  TreatmentsRoute: TreatmentsRoute,
+  SiteRoute: SiteRouteWithChildren,
+  AdminRoute: AdminRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
