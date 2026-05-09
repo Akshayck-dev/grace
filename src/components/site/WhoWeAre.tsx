@@ -58,21 +58,6 @@ export function WhoWeAre() {
         </motion.div>
       </div>
 
-      {/* Floating Contact Icons (Match the screenshot style) */}
-      <div className="fixed right-6 bottom-24 z-50 flex flex-col gap-3">
-        <button className="h-12 w-12 rounded-full bg-amber-400 text-black flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-          <span className="text-xl">📅</span>
-        </button>
-        <button className="h-12 w-12 rounded-full bg-cyan-400 text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-          <span className="text-xl">📞</span>
-        </button>
-        <button className="h-12 w-12 rounded-full bg-green-500 text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-          <span className="text-xl">💬</span>
-        </button>
-        <button className="h-12 w-12 rounded-full bg-red-500 text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-          <span className="text-xl">✉️</span>
-        </button>
-      </div>
     </section>
   );
 }
