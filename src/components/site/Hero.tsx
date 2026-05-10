@@ -39,7 +39,7 @@ export function Hero({ slides: dbSlides }: { slides?: HeroSlide[] }) {
   const current = slides[i];
 
   return (
-    <section className="relative h-screen min-h-[700px] w-full overflow-hidden bg-white">
+    <section className="relative h-[85vh] sm:h-screen min-h-[600px] sm:min-h-[700px] w-full overflow-hidden bg-white">
       {/* Background Images with Cross-fade */}
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
@@ -56,7 +56,7 @@ export function Hero({ slides: dbSlides }: { slides?: HeroSlide[] }) {
             <img 
               src={current.image} 
               alt="Hero" 
-              className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none"
+              className="absolute inset-0 h-full w-full object-cover object-[50%_35%] pointer-events-none"
             />
           </picture>
           {/* Top gradient for Navbar visibility */}
