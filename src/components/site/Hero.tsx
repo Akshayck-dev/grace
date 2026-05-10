@@ -56,7 +56,7 @@ export function Hero({ slides: dbSlides }: { slides?: HeroSlide[] }) {
             <img 
               src={current.image} 
               alt="Hero" 
-              className="h-full w-full object-cover object-top md:object-center transition-transform duration-[10s] scale-105"
+              className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none"
             />
           </picture>
           {/* Top gradient for Navbar visibility */}
