@@ -24,7 +24,21 @@ export const useGallery = () => {
   const galleryQuery = useQuery({
     queryKey: ["gallery"],
     queryFn: async () => {
+      const token = localStorage.getItem("auth_token");
+
       try {
+        if (!token) {
+          const data = await pageContentApi.getAllForCustomers("Gallery");
+          return data.map((item, index): GalleryItem => ({
+            id: item.id || index + 2000,
+            title: item.title || "",
+            tag: item.location || "",
+            image_url: getFullImageUrl(item.image as string) || "",
+            order_index: item.displayOrder,
+          }));
+        }
+
+        // Admin mode
         const data = await pageContentApi.getAll("Gallery");
         return data
           .filter(item => item.isActive)
@@ -36,14 +50,8 @@ export const useGallery = () => {
             order_index: item.displayOrder,
           }));
       } catch (error) {
-        const data = await pageContentApi.getAllForCustomers("Gallery");
-        return data.map((item, index): GalleryItem => ({
-          id: item.id || index + 2000,
-          title: item.title || "",
-          tag: item.location || "",
-          image_url: getFullImageUrl(item.image as string) || "",
-          order_index: item.displayOrder,
-        }));
+        console.error("Gallery fetch error:", error);
+        return [];
       }
     },
   });

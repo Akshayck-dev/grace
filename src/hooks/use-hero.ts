@@ -29,13 +29,46 @@ export const useHero = () => {
   const heroQuery = useQuery({
     queryKey: ["hero"],
     queryFn: async () => {
+      const token = localStorage.getItem("auth_token");
+      
       try {
+        // If no token, jump straight to the public endpoint to avoid 401 errors
+        if (!token) {
+          const data = await pageContentApi.getAllForCustomers("Slider");
+          return data.map((item): HeroSlide => {
+            let titleData: any = { eyebrow: "", title1: "", title2: "" };
+            let descData: any = { description: "", cta: "", accent_to: "" };
+            
+            try {
+              if (item.title?.startsWith("{")) titleData = JSON.parse(item.title);
+              else titleData.title1 = item.title || "";
+            } catch (e) {}
+
+            try {
+              if (item.description?.startsWith("{")) descData = JSON.parse(item.description);
+              else descData.description = item.description || "";
+            } catch (e) {}
+
+            return {
+              id: item.id,
+              eyebrow: titleData.eyebrow || "",
+              title1: titleData.title1 || "",
+              title2: titleData.title2 || "",
+              description: descData.description || "",
+              cta: descData.cta || "",
+              accent_to: descData.accent_to || "",
+              image_url: getFullImageUrl(item.image as string) || "",
+              mobile_image_url: getFullImageUrl(item.mobileImage as string) || "",
+              order_index: item.displayOrder,
+            };
+          });
+        }
+
+        // Admin mode: authenticated user
         const data = await pageContentApi.getAll("Slider");
         return data
           .filter(item => item.isActive)
           .map((item): HeroSlide => {
-            console.log("🔍 Raw Slider Item:", item);
-            // Check multiple possible keys for mobile image from the server
             const mobilePath = item.mobileImage || (item as any).slider_mob || (item as any).mobile_image || (item as any).slider_mobile;
             const desktopPath = item.image || (item as any).slider_web;
 
@@ -80,35 +113,8 @@ export const useHero = () => {
             };
           });
       } catch (error) {
-        // Fallback to Public API if Admin API is currently unavailable/failing
-        const data = await pageContentApi.getAllForCustomers("Slider");
-        return data.map((item): HeroSlide => {
-          let titleData = { eyebrow: "", title1: "", title2: "" };
-          let descData = { description: "", cta: "", accent_to: "" };
-          
-          try {
-            if (item.title?.startsWith("{")) titleData = JSON.parse(item.title);
-            else titleData.title1 = item.title || "";
-          } catch (e) {}
-
-          try {
-            if (item.description?.startsWith("{")) descData = JSON.parse(item.description);
-            else descData.description = item.description || "";
-          } catch (e) {}
-
-          return {
-            id: item.id,
-            eyebrow: titleData.eyebrow,
-            title1: titleData.title1,
-            title2: titleData.title2,
-            description: descData.description,
-            cta: descData.cta,
-            accent_to: descData.accent_to,
-            image_url: getFullImageUrl(item.image as string) || "",
-            mobile_image_url: getFullImageUrl(item.mobileImage as string) || "",
-            order_index: item.displayOrder,
-          };
-        });
+        console.error("Hero fetch error:", error);
+        return [];
       }
     },
   });

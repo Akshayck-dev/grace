@@ -24,7 +24,31 @@ export const useTestimonials = () => {
   const testimonialsQuery = useQuery({
     queryKey: ["testimonials"],
     queryFn: async () => {
+      const token = localStorage.getItem("auth_token");
+
       try {
+        if (!token) {
+          const data = await pageContentApi.getAllForCustomers("Testimonials");
+          return data.map((item): Testimonial => {
+            let descData = { role: "", rating: 5, quote: "" };
+            try {
+              if (item.description?.startsWith("{")) descData = JSON.parse(item.description);
+              else descData.quote = item.description || "";
+            } catch (e) {}
+
+            return {
+              id: item.id,
+              name: item.title || "",
+              role: descData.role || "",
+              rating: descData.rating || 5,
+              quote: descData.quote || "",
+              avatar_url: getFullImageUrl(item.image as string) || "",
+              order_index: item.displayOrder,
+            };
+          });
+        }
+
+        // Admin mode
         const data = await pageContentApi.getAll("Testimonials");
         return data
           .filter(item => item.isActive)
@@ -54,24 +78,8 @@ export const useTestimonials = () => {
             };
           });
       } catch (error) {
-        const data = await pageContentApi.getAllForCustomers("Testimonials");
-        return data.map((item): Testimonial => {
-          let descData = { role: "", rating: 5, quote: "" };
-          try {
-            if (item.description?.startsWith("{")) descData = JSON.parse(item.description);
-            else descData.quote = item.description || "";
-          } catch (e) {}
-
-          return {
-            id: item.id,
-            name: item.title || "",
-            role: descData.role || "",
-            rating: descData.rating || 5,
-            quote: descData.quote || "",
-            avatar_url: getFullImageUrl(item.image as string) || "",
-            order_index: item.displayOrder,
-          };
-        });
+        console.error("Testimonials fetch error:", error);
+        return [];
       }
     },
   });

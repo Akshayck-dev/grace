@@ -24,7 +24,30 @@ export const useServices = () => {
   const servicesQuery = useQuery({
     queryKey: ["services"],
     queryFn: async () => {
+      const token = localStorage.getItem("auth_token");
+
       try {
+        if (!token) {
+          const data = await pageContentApi.getAllForCustomers("Service");
+          return data.map((item): Service => {
+            let descData = { icon_name: "", description: "", details: "" };
+            try {
+              if (item.description?.startsWith("{")) descData = JSON.parse(item.description);
+              else descData.description = item.description || "";
+            } catch (e) {}
+
+            return {
+              id: item.id,
+              title: item.title || "",
+              icon_name: descData.icon_name || "Activity",
+              description: descData.description || "",
+              details: descData.details || "",
+              order_index: item.displayOrder,
+            };
+          });
+        }
+
+        // Admin mode
         const data = await pageContentApi.getAll("Service");
         return data
           .filter(item => item.isActive)
@@ -53,23 +76,8 @@ export const useServices = () => {
             };
           });
       } catch (error) {
-        const data = await pageContentApi.getAllForCustomers("Service");
-        return data.map((item): Service => {
-          let descData = { icon_name: "", description: "", details: "" };
-          try {
-            if (item.description?.startsWith("{")) descData = JSON.parse(item.description);
-            else descData.description = item.description || "";
-          } catch (e) {}
-
-          return {
-            id: item.id,
-            title: item.title || "",
-            icon_name: descData.icon_name || "Activity",
-            description: descData.description || "",
-            details: descData.details || "",
-            order_index: item.displayOrder,
-          };
-        });
+        console.error("Services fetch error:", error);
+        return [];
       }
     },
   });
