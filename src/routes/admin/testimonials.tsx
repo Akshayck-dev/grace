@@ -122,16 +122,16 @@ function AdminTestimonials() {
                       <Input name="name" defaultValue={editingT?.name} placeholder="Name..." required className="rounded-xl border-muted bg-muted/30 focus:bg-white transition-all h-9 px-3 text-xs font-medium" />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/60 ml-1">Subtitle</label>
-                      <Input name="role" defaultValue={editingT?.role} placeholder="Service..." required className="rounded-xl border-muted bg-muted/30 focus:bg-white transition-all h-9 px-3 text-xs font-medium" />
+                      <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/60 ml-1">Location</label>
+                      <Input name="role" defaultValue={editingT?.role} placeholder="City or area..." required className="rounded-xl border-muted bg-muted/30 focus:bg-white transition-all h-9 px-3 text-xs font-medium" />
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-3">
                   <div className="space-y-1">
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/60 ml-1">Quote</label>
-                    <Textarea name="quote" defaultValue={editingT?.quote} placeholder="Message..." required className="rounded-xl border-muted bg-muted/30 focus:bg-white transition-all min-h-[80px] resize-none px-3 py-2 text-xs font-medium leading-relaxed" />
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/60 ml-1">Description</label>
+                    <Textarea name="quote" defaultValue={editingT?.quote} placeholder="Share their experience..." required className="rounded-xl border-muted bg-muted/30 focus:bg-white transition-all min-h-[80px] resize-none px-3 py-2 text-xs font-medium leading-relaxed" />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-1">
@@ -167,8 +167,8 @@ function AdminTestimonials() {
             <TableHeader>
               <TableRow className="bg-muted/50">
                 <TableHead className="w-[80px]">Order</TableHead>
-                <TableHead className="w-[200px]">Client</TableHead>
-                <TableHead>Testimonial</TableHead>
+                <TableHead className="w-[200px]">Patient</TableHead>
+                <TableHead>Description</TableHead>
                 <TableHead>Rating</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
               </TableRow>
